@@ -1,0 +1,727 @@
+@gray: rgba(0, 0, 0, .44);
+@green: #50E3C2;
+@yellow: #F8E71C;
+@font: PingFangSC-Light;
+@bcolor: #F5F6F9;
+@bmargin: percentage(50/960);
+@link-color: #428bca; // sea blue
+@link-color-hover: darken(@link-color, 10%);
+@media(min-width:960px) {
+    html {
+        font-size: 20px;
+    }
+}
+
+html {
+    font-size: 20px;
+    quotes: "“" "”";
+    font-family: Helvetica, Microsoft yahei, Arial;
+    -webkit-text-size-adjust: none;
+}
+
+body {
+    background-color: @bcolor;
+}
+
+a {
+    color: #4A4A4A;
+}
+
+&:hover {
+    a {
+        text-decoration: none;
+        color: #4A4A4A;
+    }
+}
+
+
+/*首行缩进*/
+
+p {
+    text-indent: 2em;
+}
+
+
+/**********************首页 ***********************/
+
+
+/* 顶部导航栏 */
+
+header {
+    width: 100%;
+    height: 3rem;
+    min-height: 50px;
+    max-height: 60px;
+}
+
+.navbar {
+    width: 100%;
+    max-height: 60px;
+    background: #FFFFFF;
+    box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.24);
+    -moz-box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.24);
+    -webkit-box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.24);
+    -o-box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.24);
+}
+
+.container-fluid {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 960px;
+    height: 3rem;
+    max-height: 60px;
+    background: #FFFFFF;
+}
+
+
+/*左侧logo*/
+
+.navbar-brand {
+    height: 3rem;
+    padding: 10px;
+}
+
+.logo {
+    width: 115px;
+    height: 40px;
+    margin-left: 10px;
+}
+
+
+/*右侧导航*/
+
+#navbar ul li a {
+    height: 3rem !important;
+    max-height: 60px;
+    line-height: 1;
+    padding: 20px;
+    &:hover {
+        background-color: #FFFFFF !important;
+        color: #000000;
+    }
+}
+
+.navbar-right a {
+    font-family: @font;
+    color: @gray;
+    font-size: 1rem;
+}
+
+
+/*汉堡包按钮颜色*/
+
+.icon-bar {
+    background-color: #000000;
+}
+
+
+/*折叠导航*/
+
+.navbar-collapse {
+    background-color: #FFFFFF;
+}
+
+
+/**********************banner********************/
+
+.section {}
+
+.banner {
+    overflow: hidden;
+    width: 100%;
+    height: 23rem;
+    background-color: white;
+    background: url(/images/1.jpg) no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+}
+
+
+/**********************介绍********************/
+
+.intro {
+    width: 100%;
+    height: 150px;
+    background-color: @green;
+    color: #FFFFFF;
+}
+
+.wrapper {
+    display: table;
+}
+
+.intro-wrap {
+    .intro;
+    margin: 0 auto;
+    margin-top: 3rem;
+    max-width: 960px;
+    font-family: @font;
+    font-size: 1rem;
+    line-height: 1.8;
+    padding: 15px 0;
+    .image1 {
+        display: inline-block;
+        float: left;
+        width: percentage(60/960);
+        margin-left: @bmargin;
+    }
+    .text {
+        display: inline-block;
+        position: relative;
+        width: percentage(780/960);
+        left: percentage(20/960);
+        margin-right: @bmargin;
+        background-color: balck;
+    }
+    .btn {
+        position: relative;
+        top: -10px;
+        width: 110px;
+        margin: 0 auto;
+        border-radius: 25px;
+        border: 3px solid #fff;
+        font-size: .8rem;
+        font-weight: bold;
+        text-align: center;
+        overflow: hidden;
+    }
+    .about {
+        .btn;
+        margin-top: 20px;
+        a {
+            display: inline-block;
+            height: 30px;
+            line-height: 30px;
+            color: #fff;
+            text-decoration: none;
+        }
+        &:hover {
+            background-color: #fff;
+            color: @green;
+            text-decoration: none;
+            a {
+                color: @green;
+            }
+        }
+    }
+}
+
+
+/**********************内容区********************/
+
+.container {
+    margin-top: 3rem;
+    width: 100%;
+    max-width: 960px;
+    padding: 0;
+}
+
+.tittle {
+    margin-left: @bmargin;
+    .t-text {
+        float: left;
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: #4A4A4A;
+    }
+    .t-pic {
+        width: 1.3rem;
+    }
+}
+
+.post {
+    margin: 30px auto;
+    padding: 2rem;
+    background: #FFFFFF;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 860px;
+    .p-tittle {
+        display: inline;
+        margin-top: 20px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #4A4A4A;
+    }
+    .p-time {
+        display: inline;
+        font-size: .8rem;
+        color: #9B9B9B;
+        margin-left: 1rem;
+    }
+    /*内容省略至多显示3行*/
+    .p-content {
+        margin-top: 20px;
+        font-size: 1rem;
+        height: 5.4rem;
+        color: #4A4A4A;
+        letter-spacing: 1.2px;
+        line-height: 1.8;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-overflow: -o-ellipsis-lastline;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
+}
+
+
+/*查看更多*/
+
+.more {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 3rem;
+    padding: 5px;
+    width: 110px;
+    border-radius: 25px;
+    font-size: .8rem;
+    font-weight: bold;
+    background-color: @green;
+    a {
+        text-decoration: none;
+        font-size: 14px;
+        color: #FFF;
+    }
+    &:hover {
+        background-color: #00CC99;
+    }
+}
+
+
+/**********************底部********************/
+
+footer {
+    width: 100%;
+    height: 5rem;
+    background: #4A4A4A;
+    font-family: FZLTXHK--GBK1-0;
+    .foot-wrap {
+        width: 100%;
+        max-width: 960px;
+        height: 5rem;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+    .by,
+    .copy,
+    .my-email {
+        margin-left: @bmargin;
+        margin-top: .6rem;
+        font-size: 12px;
+        color: #FFFFFF;
+    }
+}
+
+
+/* *********************列表页 *************************************************/
+
+
+/**********************筛选********************/
+
+.filter-container {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    margin-top: 2rem;
+    .filter-tittle {
+        margin-left: @bmargin;
+        font-size: 1rem;
+        font-weight: bold;
+        color: #4A4A4A;
+        display: inline-block;
+    }
+    .tag {
+        margin-left: .5rem;
+        width: 3rem;
+        height: 1.5rem;
+        line-height: 1.5rem;
+        border-radius: 25px;
+        text-align: center;
+        font-size: 0.8rem;
+        background-color: @green;
+        a {
+            color: #fff;
+            text-decoration: none;
+        }
+        &:hover {
+            background-color: #fff;
+            a {
+                color: @green;
+            }
+        }
+    }
+}
+
+.tag-tittle,
+.tag {
+    display: inline-block;
+}
+
+.tag-active {
+    background-color: #fff;
+    a {
+        color: @green;
+    }
+}
+
+
+/*列表＊＊＊＊＊＊＊＊＊*/
+
+.list-content {
+    margin-top: 1.5rem !important;
+}
+
+.list-tittle {
+    font-size: 1rem !important;
+}
+
+.no-article {
+    display: none;
+    text-align: center;
+}
+
+
+/************************简历页面***************************************/
+
+
+/*    /*********************头部********************/
+
+.info-container {
+    background: @green;
+    height: 9rem;
+    width: 100%;
+    overflow: hidden;
+}
+
+.info-inner {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.info-inner span {
+    margin-left: .8rem;
+}
+
+.info-photo {
+    width: 3rem;
+}
+
+.info-name1,
+.info-name2,
+.info-age {
+    height: 1.5rem;
+    line-height: 1.5rem;
+    font-family: HanziPenTC-W5;
+    font-size: 1rem;
+    color: #FFFFFF;
+}
+
+.info-quote {
+    font-family: HannotateTC-W5;
+    font-size: 1rem;
+    color: #FFF;
+}
+
+.my-email {
+    color: #fff;
+}
+
+
+/* *****************教育**********************/
+
+.middle-container {
+    width: 100%;
+    background-color: #fff;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.edu-container,
+.work-container,
+.pro-container {
+    position: relative;
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.back-txt {
+    position: relative;
+    font-family: @font;
+    font-size: 1.5rem;
+    color: #CCCCCC;
+    line-height: 3rem;
+}
+
+.first-tittle {
+    font-family: @font;
+    font-size: 1.5rem;
+    color: #50E3C2;
+}
+
+.sec-tittle {
+    font-family: PingFangSC-Regular;
+    font-size: 1rem;
+    color: #4A4A4A;
+}
+
+.edu-info,
+.work-info {
+    width: percentage(860/960);
+    margin: 0 auto;
+}
+
+.detail-txt {
+    margin-top: .5rem;
+    font-family: @font;
+    font-size: 12px;
+    color: #000000;
+}
+
+
+/*****************工作***********************/
+
+.work-info2 {
+    margin-top: 2rem;
+}
+
+@media screen and (min-width: 800px) {
+    .back-txt {
+        font-size: 6rem;
+        color: #F4F5F5;
+        line-height: 6rem;
+    }
+    .edu-info,
+    .work-info {
+        left: 0;
+        right: 0;
+        position: absolute;
+        top: 3rem;
+    }
+    .work-info2 {
+        top: 7rem !important;
+    }
+}
+
+
+/*****************编程***********************/
+
+.code-txt {
+    font-family: @font;
+    font-size: 1.5rem;
+    color: #CCCCCC;
+    line-height: 3rem;
+    width: percentage(860/960);
+    margin: 0 auto;
+}
+
+.pro-pic {
+    width: 300px;
+    height: 150px;
+    margin: .5rem auto;
+}
+
+.pro-wrapper {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.pro-tittle {
+    text-align: center;
+}
+
+.pro-info {
+    text-align: left;
+    width: percentage(800/960);
+    margin: 3rem auto;
+}
+
+.pro-start,
+.pro-end {
+    margin-top: .5rem;
+}
+
+.pro-why,
+.pro-what {
+    margin-top: .8rem;
+    font-weight: bold;
+}
+
+
+/************************文章页面***************************************/
+
+.page-container {
+    width: 100%;
+    background-color: #FFF;
+    font-family: PingFangSC-Regular;
+}
+
+.at-container {
+    width: percentage(700/960);
+    max-width: 800px;
+    margin: 0 auto;
+    section {
+        margin-top: 1.5rem;
+        line-height: 1.5;
+        font-family: @font !important;
+        h3 {
+            font-size: .9rem;
+            font-family: @font !important;
+        }
+        p,
+        li {
+            font-size: .8rem;
+            line-height: 2.5;
+            margin-top: .5rem;
+            font-weight: 200;
+        }
+        img {
+            display: block;
+            width: 70%;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        a {
+            color: @green !important;
+        }
+        quote {
+            font-size: 2rem;
+            font-style: ;
+        }
+    }
+}
+
+.at-tittle {
+    display: inline-block;
+    font-size: 1.2rem;
+    color: #4A4A4A;
+    margin: 1rem auto;
+}
+
+.at-time {
+    font-family: @font !important;
+    font-size: 14px;
+    color: #9B9B9B;
+}
+
+.at-author {
+    color: @green;
+}
+
+.at-summary {
+    margin-top: 1rem;
+    font-size: .9rem;
+    color: #4A4A4A;
+    line-height: 1.5;
+}
+
+
+/*标签*/
+
+.tag-container,
+.user-container {
+    width: percentage(700/960);
+    max-width: 800px;
+    margin: 1rem auto;
+}
+
+.tag-name {
+    color: @green;
+    margin-left: 1rem;
+}
+
+.talk-icon {
+    margin-left: 1rem;
+}
+
+.fav-icon,
+.talk-icon {
+    color: @green;
+    font-size: 1rem;
+    display: inline
+}
+
+.fav-no,
+.talk-no {
+    color: @gray;
+}
+
+.fa-heart {
+    backgroung-color: @green;
+    display: none;
+}
+
+
+/***************评论******************/
+
+.comment-container {
+    .at-container;
+    .tittle {
+        margin-left: 0 !important;
+    }
+}
+
+.comment-wrapper {
+    background-color: #FFF;
+    margin-top: 1rem;
+    .user-img {
+        margin-top: .5rem;
+        width: 1.8rem;
+    }
+    .com-user {
+        width: percentage(700/800);
+        max-width: 700px;
+        margin: 1rem auto;
+        .user-pic {
+            float: left;
+            margin: .6rem auto;
+            margin-right: 1rem;
+        }
+        .user-name {
+            display: inline-block;
+            margin-top: 1rem;
+            color: @green;
+        }
+        .user-time {
+            color: @gray;
+        }
+    }
+    .com-txt {
+        width: percentage(700/800);
+        max-width: 700px;
+        margin: 1rem auto;
+        padding-bottom: 1rem;
+    }
+    .com-input {
+        width: 100%;
+        height: 100px;
+        border: #CCCCCC 1px solid;
+    }
+    .add-comment {
+        background-color: @green;
+        border: none;
+    }
+}
+
+.submit-wrapper {
+    display: none;
+    padding-top: .4rem;
+}
+
+
+/* 文章编辑页面*/
+
+.form-container {
+    width: 100%;
+    max-width: 980px;
+    margin: 0 auto;
+}

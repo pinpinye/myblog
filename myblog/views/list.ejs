@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <title> BlinkD </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <!-- <link rel="stylesheet" href="css/main.css" type="text/css" /> -->
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css" type="text/css" />
+        <link rel="stylesheet/less" type="text/css" href="/stylesheets/main.less" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/png">
+    <script src="/javascripts/jquery-3.1.1.min.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
+    <script src="/javascripts/less.js"></script>
+    <script src="/javascripts/index.js"></script>
+</head>
+
+<body>
+        <%- include('partials/navbar') %>
+    <section>
+        <div class="filter-container">
+        <div class="filter-tittle">分类</div>
+        <div class="tag"><a href="#">全部</a></div>
+        <div class="tag"><a href="#">产品</a></div>
+        <div class="tag"><a href="#">设计</a></div>
+        <div class="tag"><a href="#">前端</a></div>
+        <div class="tag"><a href="#">其他</a></div>
+        </div>
+    </section>
+ <section>
+        <div class="container  list-content">
+            <div class="tittle">
+                <div class="t-text list-tittle">内容列表</div><span><img class="t-pic" src="/images/head.png"></span>
+            </div>
+            <div class="content">
+            <div class="post no-article">还没有相关内容哦～</div>
+            <% articles.forEach(function(article) { %>
+                <div class="post post-wrapper">
+                    <div class="p-tittle"><a href="/articles/<%= article.id %>"><%= article.tittle %></a></div>
+                    <div class="p-time"><span class="p-day"><%= article.day %></span><span>前</span></div>
+                    <div class="p-content"><a href="/articles/<%= article.id %>"><p><%= article.summary %></p></a></div>
+                </div>
+             <% }); %>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

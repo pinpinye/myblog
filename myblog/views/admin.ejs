@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <title> BlinkD </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <!-- <link rel="stylesheet" href="css/main.css" type="text/css" /> -->
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="/stylesheets/font-awesome/css/font-awesome.min.css" type="text/css"/>
+        <link rel="stylesheet/less" type="text/css" href="/stylesheets/main.less" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/png">
+    <script src="/javascripts/jquery-3.1.1.min.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
+    <script src="/javascripts/less.js"></script>
+    <script src="/javascripts/index.js"></script>
+</head>
+<body>
+<header>
+      <!-- Static navbar -->
+           <%- include('partials/navbar') %>
+</header>
+<div class="form-container">
+<form class="form-horizontal" method="post">
+ <fieldset>
+<h3 class="addUser">
+增加文章
+</h3>
+<div class="control-group">
+ <label class="control-label t-tittle" for="tittle">标题</label>
+ <div class="controls">
+ <input type="text" class="input-xlarge" id="tittle" name="tittle" placeholder="输入文章题目">
+ </div>
+ </div>
+ <div class="control-group">
+ <label class="control-label summary" for="summary">总结描述</label>
+ <div class="controls">
+ <input type="text" class="input-xlarge" id="summary" name="summary" placeholder="输入总结描述">
+ <!-- <p class="help-block"></p> -->
+ </div>
+ </div>
+  <div class="control-group">
+ <label class="control-label author" for="author">作者</label>
+ <div class="controls">
+ <input type="text" class="input-xlarge" id="author" name="author" placeholder="输入文章作者">
+ </div>
+ </div>
+ <div class="control-group">
+ <label class="control-label content" for="content">内容</label>
+ <div class="controls">
+ <input type="text" class="input-xlarge" id="content" name="content" placeholder="输入文章内容">
+ </div>
+ </div>
+ <div class="control-group">
+ <label class="control-label tag" for="tag">标签</label>
+ <div class="controls">
+ <input type="text" class="input-xlarge" id="tag" name="tag" placeholder="输入文章标签">
+ </div>
+ </div>
+ <div>&nbsp;</div>
+ <div class="form-actions">
+ <button type="submit" class="btn btn-primary add">添加</button>
+ </div>
+  </fieldset>
+</form>
+<div class="a-list">
+<h3>文章列表</h3>
+  <ul class="list">
+    <li class="article">
+    <% articles.forEach(function(article) { %>
+        <li>
+        <div><span>标题</span><%= article.tittle %></div>
+        <div><span>作者</span> <%= article.author %></div>
+        <div><span>总结</span><%= article.summary %></div>
+        <div><span>标签</span><%= article.tag %></div>
+        <div><span>内容</span><%= article.content %></div>
+    </li>
+    <% }); %>
+    </li>
+  </ul>
+</div>
+<div class="d-article">
+<h3 class="d-tittle">
+删除文章
+</h3>
+<div class="control-group">
+ <label class="control-label t-tittle" for="tittle">标题:</label>
+ <div class="controls">
+ <input type="text" class="input-xlarge delete-tittle" id="tittle" name="tittle" placeholder="输入您要删除的文章标题">
+ </div>
+</div>
+ <div>&nbsp;</div>
+ <button class="btn btn-primary delete-button">删除</button>
+</div>
+ <div>&nbsp;</div>
+ <div>&nbsp;</div>
+
+</div>
+         <%- include('partials/footer') %>
+
+<script>
+$(function() {
+    $('.delete-button').on('click', function(event) {
+        var tittle = $('.delete-tittle').val();
+        //发送POST请求
+        var posting = $.post('/shanchuarticle', { tittle: tittle });
+        posting.done(function(data) {
+          if(data=="success"){
+            alert("删除成功！");
+            $('.delete-tittle').val('');
+          }
+        });
+    });
+});
+
+</script>
+ <script src="/javascripts/bootstrap.min.js"></script>
+<!--
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  -->
+  </body>
+</html>

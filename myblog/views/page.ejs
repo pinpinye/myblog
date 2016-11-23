@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <title> BlinkD </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <!-- <link rel="stylesheet" href="css/main.css" type="text/css" /> -->
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="/stylesheets/font-awesome/css/font-awesome.min.css" type="text/css"/>
+        <link rel="stylesheet/less" type="text/css" href="/stylesheets/main.less" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/png">
+    <script src="/javascripts/jquery-3.1.1.min.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
+    <script src="/javascripts/less.js"></script>
+    <script src="/javascripts/index.js"></script>
+</head>
+<body>
+     <%- include('partials/navbar') %>
+    <div class="page-container">
+    <div class="at-container">
+    <div class="at-tittle"><%= article.tittle %></div><span class="at-time">&nbsp;&nbsp;<%= article.updated.getFullYear()+"年"%><%= article.updated.getMonth()+1+"月"%><%= article.updated.getDate()+"日"%></span>
+    <div class="author">By<span class="at-author">&nbsp;<%= article.author %></span></div>
+    <div class="at-summary"><%= article.summary %></div>
+    <section>
+    <%- article.content%>
+    </section>
+    </div>
+    <div class="tag-container">
+        <span class="tag-txt">标签</span>
+        <span class="tag-name"><%= article.tag %></span>
+    </div>
+    <div class="user-container">
+        <a><span class="fav-icon">
+        <i class="fa fa-heart-o" aria-hidden="true"></i>
+        <i class="fa fa-heart" aria-hidden="true"></i>
+        </span></a>
+        <span class="fav-no"><%= article.favorite %></span>
+        <span class="talk-icon"><i class="fa fa-comment-o" aria-hidden="true"></i>
+        </span><a href="#">
+        <span class="talk-no"><%= article.comment.length %></span></a>
+    </div>
+    </div>
+    <div class="comment-container">
+         <div class="tittle"><div class="t-text">文章评论</div><span><img class="t-pic" src="/images/head.png"></span></div>
+         <div class="comment-wrapper submit-wrapper">
+             <div class="com-user com-submit">
+                 <label class="com-name" for="tittle">昵称</label>
+                 <div class="input-name">
+                 <input type="text" class="submit-name" placeholder="给自己取个昵称吧">
+                 </div>
+             </div>
+             <div class="com-txt">
+                <textarea class="com-input submit-com" placeholder="说点什么吧····"></textarea>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary add add-comment">发表评论</button>
+                </div>
+             </div>
+         </div>
+         <div class="all-comment">
+            <% article.comment.forEach(function(comment) { %>
+             <div class="comment-wrapper">
+             <div class="com-user">
+                 <div class="user-pic"><img class="user-img" src="/images/com.png" alt=""></div>
+                 <div class="user-name"><%= comment.name %></div>
+                 <div class="user-time"><%= comment.date.getFullYear()+"."%><%= comment.date.getMonth()+1+"."%><%= comment.date.getDate()%></div>
+             </div>
+             <div class="com-txt">
+                 <%= comment.comment %>
+             </div>
+             </div>
+            <% }); %>
+    </div>
+    </div>
+</body>
+
+</html>

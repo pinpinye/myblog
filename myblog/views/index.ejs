@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <title> BlinkD </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <!-- <link rel="stylesheet" href="css/main.css" type="text/css" /> -->
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css" type="text/css" />
+        <link rel="stylesheet/less" type="text/css" href="/stylesheets/main.less" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/png">
+    <script src="/javascripts/jquery-3.1.1.min.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
+    <script src="/javascripts/less.js"></script>
+    <script src="/javascripts/index.js"></script>
+</head>
+<body>
+               <%- include('partials/navbar') %>
+    <section>
+    	<div class="banner"></div>
+    </section>
+    <section>
+    	<div class="intro">
+    	<div class="wrpper">
+    	<div class="intro-wrap">
+			<div class="photo"><img class="image1" src="/images/p3.png" alt=""></div>
+			<div class="text">“Hi!&nbsp;欢迎来到<b>BlinkD</b>!这是我设计开发的个人网站，在这里你可以看到我收集或纪录的一些开发和设计的知识和资源。”</div>
+			<div class="about"><a href="/about">ABOUT&nbsp;ME</a></div>
+    	</div></div>
+    </section>
+    <section>
+    	<div class="container">
+			<div class="tittle">
+				<div class="t-text">最近更新</div><span><img class="t-pic" src="/images/head.png"></span>
+			</div>
+			<div class="content">
+               <% articles.forEach(function(article,index) { %>
+                <div class="post">
+                    <div class="p-tittle"><a href="/articles/<%= article.id %>"><%= article.tittle %></a></div>
+                    <div class="p-time"><span class="p-day"><%= article.day %></span><span>前</span></div>
+                    <div class="p-content"><a href="/articles/<%= article.id %>"><p><%= article.summary %></p></a></div>
+                </div>
+             <% }); %>
+			</div>
+			<div class="more"><a href="/list">查看更多</a></div>
+    	</div>
+    </section>
+                   <%- include('partials/footer') %>
+</body>
+
+</html>
