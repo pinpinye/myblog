@@ -17,9 +17,9 @@ var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 // connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/myblog');
-  // .then(() =>  console.log('connection succesful'))
-  // .catch((err) => console.error(err));
+mongoose.connect('mongodb://localhost:27017/myblog')
+  .then(() =>  console.log('connection succesful'))
+  .catch((err) => console.error(err));
 
 
 // view engine setup
