@@ -25,7 +25,6 @@
 $(function() {
     // 获取路径
     var path = window.location.pathname;
-    console.log(path);
     // 匹配
     $('.navbar-nav li a').filter(function() {
             return $(this).attr('href') == path;
@@ -130,7 +129,6 @@ $(function() {
     });
 
     var postTxt = $('.list-content .post-wrapper').text();
-    console.log(postTxt);
     if (postTxt == '') {
                 $('.no-article').css('display', 'block');
    }
