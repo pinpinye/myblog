@@ -8,8 +8,8 @@
             var currentSize = 20 * (clientWidth / 960);
             if (currentSize > 20) {
                 docEl.style.fontSize = 20 + 'px';
-            } else if (currentSize < 14) {
-                docEl.style.fontSize = 14 + 'px';
+            } else if (currentSize < 16) {
+                docEl.style.fontSize = 16 + 'px';
             } else {
                 docEl.style.fontSize = currentSize + 'px';
             }
@@ -80,6 +80,10 @@ $(function() {
         } else {
             $('.submit-wrapper').css('display', 'none');
             comCount++;
+            $('.submit-name').val('');
+            $('.submit-com').val('');
+            $('.warn-name').css('display', 'none');
+            $('.warn-com').css('display', 'none');
         }
     });
 });
@@ -90,25 +94,45 @@ $(function() {
         var tittle = $('.at-tittle').text();
         var userName = $('.submit-name').val();
         var userComment = $('.submit-com').val();
-        //发送POST请求
-        var posting = $.post('/com', { tittle: tittle, username: userName, usercomment: userComment });
-        posting.done(function(data) {
-            var today = new Date();
-            var comDay = today.getFullYear() + '.' + (today.getMonth() + 1) + '.' + today.getDate();
-            var talk = parseInt($('.talk-no').text());
-            var newTalk = talk + 1;
-            var newCom = '<div class="comment-wrapper">' + '<div class="com-user">' + '<div class="user-pic"><img class="user-img" src="/images/com.png" alt=""></div>' + '<div class="user-name">' + userName + '</div>' + '<div class="user-time">' + comDay + '</div>' + '</div>' + '<div class="com-txt">' + userComment + '</div>';
-            // 隐藏评论框
-            $('.submit-wrapper').css('display', 'none');
-            // 插入最新评论
-            $('.all-comment').prepend(newCom);
-            // 评论数更新
-            $('.talk-no').text(newTalk);
-            // 评论输入框清空
-            $('.submit-name').val('');
-            $('.submit-com').val('');
-        });
+        // 评论内容和昵称不能为空
+        if (userName === '') {
+            $('.warn-name').css('display', 'block');
+        }
+        if (userComment === '') {
+            $('.warn-com').css('display', 'block');
+        } else {
+            //发送POST请求
+            var posting = $.post('/com', { tittle: tittle, username: userName, usercomment: userComment });
+            posting.done(function(data) {
+                var today = new Date();
+                var comDay = today.getFullYear() + '.' + (today.getMonth() + 1) + '.' + today.getDate();
+                var talk = parseInt($('.talk-no').text());
+                var newTalk = talk + 1;
+                var newCom = '<div class="comment-wrapper">' + '<div class="com-user">' + '<div class="user-pic"><img class="user-img" src="/images/com.png" alt=""></div>' + '<div class="user-name">' + userName + '</div>' + '<div class="user-time">' + comDay + '</div>' + '</div>' + '<div class="com-txt">' + userComment + '</div>';
+                // 隐藏评论框
+                $('.submit-wrapper').css('display', 'none');
+                // 插入最新评论
+                $('.all-comment').prepend(newCom);
+                // 评论数更新
+                $('.talk-no').text(newTalk);
+                // 评论输入框清空
+                $('.submit-name').val('');
+                $('.submit-com').val('');
+                $('.warn-name').css('display', 'none');
+                $('.warn-com').css('display', 'none');
+            });
+        }
     });
+});
+
+$(function() {
+    $('.submit-com').on('focus', function(event) {
+        $('.warn-com').css('display', 'none');
+    });
+      $('.submit-name').on('focus', function(event) {
+        $('.warn-name').css('display', 'none');
+    });
+
 });
 
 // 如无评论时自动显示评论框
@@ -130,10 +154,6 @@ $(function() {
 
     var postTxt = $('.list-content .post-wrapper').text();
     if (postTxt == '') {
-                $('.no-article').css('display', 'block');
-   }
+        $('.no-article').css('display', 'block');
+    }
 });
-
-
-
-

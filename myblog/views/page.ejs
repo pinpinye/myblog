@@ -4,6 +4,7 @@
     <title> BlinkD </title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+     <meta name="format-detection" content="telephone=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <!-- <link rel="stylesheet" href="css/main.css" type="text/css" /> -->
     <link rel="stylesheet" href="/stylesheets/bootstrap.min.css" type="text/css" />
@@ -48,9 +49,11 @@
                  <div class="input-name">
                  <input type="text" class="submit-name" placeholder="给自己取个昵称吧">
                  </div>
+                 <div class="warn-name">昵称不能为空哦</div>
              </div>
-             <div class="com-txt">
+             <div class="com-txt hide-input">
                 <textarea class="com-input submit-com" placeholder="说点什么吧····"></textarea>
+                <div class="warn-com">评论不能为空哦</div>
                 <div class="form-actions">
                     <button type="submit" class="btn btn-primary add add-comment">发表评论</button>
                 </div>
@@ -61,8 +64,10 @@
              <div class="comment-wrapper">
              <div class="com-user">
                  <div class="user-pic"><img class="user-img" src="/images/com.png" alt=""></div>
-                 <div class="user-name"><%= comment.name %></div>
-                 <div class="user-time"><%= comment.date.getFullYear()+"."%><%= comment.date.getMonth()+1+"."%><%= comment.date.getDate()%></div>
+                 <div class="user-nt">
+                 <div class="user-name"><%= comment.name %></div>&nbsp;&nbsp;
+                 <span class="user-time"><%= comment.date.getFullYear()+"-"%><%= comment.date.getMonth()+1+"-"%><%= comment.date.getDate()%></span>
+                 </div>
              </div>
              <div class="com-txt">
                  <%= comment.comment %>
